@@ -1,37 +1,67 @@
 import React from 'react';
-import {  Button, Col, Input, Layout, Menu, Row, Typography } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
+import { Button, Col, Input, Layout, Menu, Row, Typography } from 'antd';
+import {
+	SearchOutlined,
+	FormOutlined,
+	HeartOutlined,
+	ShoppingCartOutlined,
+	UserOutlined,
+	CaretDownOutlined
+} from '@ant-design/icons';
 import { Outlet } from 'react-router-dom';
+import DrawerMenu from '../components/DrawerMenu';
 
 const { Header, Content } = Layout;
 
 const menuItems = [
 	{
-		key: 'home',
+		key: 'create',
 		label: <Button
 			type='text'
-			href='/'
+			href='/create'
+			icon={<FormOutlined />}
 		>
-			Home
+			Create
 		</Button>
 	},
 	{
-		key: 'explore',
+		key: 'myFavorites',
 		label: <Button
 			type='text'
-			href='/explore'
+			href='/myFavorites'
+			icon={<HeartOutlined />}
 		>
-			Explore
+			My favorites
 		</Button>
 	},
 	{
-		key: 'about',
+		key: 'addToCart',
 		label: <Button
 			type='text'
-			href='/about'
+			href='/addToCart'
+			icon={<ShoppingCartOutlined />}
 		>
-			About
+			Add to cart
 		</Button>
+	},
+	{
+		key: 'account',
+		label: <Button
+			type='text'
+			icon={<UserOutlined />}
+		>
+			Account <CaretDownOutlined />
+		</Button>,
+		children: [
+			{
+				key: 'login',
+				label: 'Log in'
+			},
+			{
+				key: 'signup',
+				label: 'Sign up'
+			}
+		]
 	},
 ];
 
@@ -42,58 +72,40 @@ export default function MainLayout() {
 			<Header>
 				<Row >
 					<Col>
-						<Button
-							type='primary'
-							style={{ fontWeight: 'bold' }}
-						>
-							R
-						</Button>
+						<DrawerMenu />
 					</Col>
+
 					<Col>
 						<Typography
 							style={{
-								marginLeft: '20px',
+								marginLeft: '5px',
 								fontWeight: 'bolder',
 								fontSize: '18px'
 							}}
-						> Rapy
+						> NOWHERE
 						</Typography>
 					</Col>
-					<Col xs={8}>
-						<Menu
-							mode="horizontal"
-							items={menuItems}
-							style={{ marginLeft: '40px' }}
-						/>
-					</Col>
-					<Col flex={1} />
+
 					<Col>
 						<Input
-							placeholder="Search now "
 							allowClear
-							prefix={<SearchOutlined />}
+							suffix={<SearchOutlined />}
 							style={{
-								width: 200,
+								width: 300,
 								borderRadius: '16px',
+								marginLeft: '30px'
 							}}
 						/>
 					</Col>
-					<Col>
-						<Button
-							type='primary'
-							shape='round'
-							style={{ marginLeft: '10px' }}
-						>
-							Create
-						</Button>
-					</Col>
-					<Col>
-						<Button
-							shape='round'
-							style={{ marginLeft: '10px' }}
-						>
-							Connect wallet
-						</Button>
+
+					<Col flex={1} />
+
+					<Col xs={12} push={2}>
+						<Menu
+							mode="horizontal"
+							items={menuItems}
+						// style={{ marginLeft: '40px' }}
+						/>
 					</Col>
 				</Row>
 			</Header>
