@@ -104,17 +104,15 @@ export default function MainLayout() {
 						<Menu
 							mode="horizontal"
 							items={menuItems}
-						// style={{ marginLeft: '40px' }}
 						/>
 					</Col>
 				</Row>
 			</Header>
 
 			<Content
-				style={{ width: '80%', margin: '0px auto' }}
+				style={{ width: '80%', margin: '0px auto', marginTop:'16px'}}
 			>
 				<Outlet />
-
 			</Content>
 		</Layout>
 	)

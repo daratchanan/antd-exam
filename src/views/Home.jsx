@@ -1,12 +1,14 @@
 import React from 'react'
 import {
-   Breadcrumb,
-   Button,
-   Col,
-   Row,
-   Typography
+	Col,
+	Row,
+	Typography
 } from 'antd';
-import ProductCard from '../components/ProductCard';
+import {
+	CaretLeftOutlined,
+	CaretRightOutlined
+} from '@ant-design/icons';
+import ImageSlider from '../components/ImageSlider';
 
 
 const categories = [
@@ -95,42 +97,59 @@ const products = [
 		totalSale: 400,
 		price: 60
 	},
-]
+];
+
+const collection = [
+	{
+		key: 1,
+		name: 'Pic 1',
+		img: 'https://i.seadn.io/gae/iRem7rZFWHgoH9Di3s280b8z_HXziEGaTQelfUC6wrncBS8LlRswK9OJ3sVhkK01xrT9Tl-jPMtWqL_U-mgV5HpB96xlyz7ZsXWAnOk?auto=format&w=384'
+	},
+	{
+		key: 2,
+		name: 'Pic 2',
+		img: 'https://i.seadn.io/gae/IQv-7FH1zfCjXbEJ3yt5ZNzD9k8nrwHSVR3_NcxO9MT8A1oisIYCQksKpLDzubJMgBruWu2olernmYcg6DuB6AJz7EHbHCMDj5U3l6E?auto=format&w=384'
+	},
+	{
+		key: 3,
+		name: 'Pic 3',
+		img: 'https://i.seadn.io/gae/R_AxZMtVv96fAR5PmZrEn4ikrlySwgcqsvKioVmTxAR2V9qFfTs6vTpM__RVpZf8GetFdOcVqUL35m2NRq3628tecuk80n1PsCx2Zxo?auto=format&w=384'
+	}
+];
 
 
 export default function Home() {
-   return (
-      <div>
-         <Breadcrumb
-            style={{
-               margin: '16px 0',
-            }}
-         >
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>Explore</Breadcrumb.Item>
-            <Breadcrumb.Item>Explore Page 1</Breadcrumb.Item>
-         </Breadcrumb>
-         <Typography.Title level={1}>Explore Now</Typography.Title>
+	return (
+		<>
+			<Row gutter={[24, 24]}>
+				<Col xs={24}>
+					<div style={{ background: '#f0f2f5',padding:'0px 32px' }}>
+						<ImageSlider products={products} />
+					</div>
+				</Col>
 
-         <Row gutter={[10, 10]} style={{ marginBottom: '19px' }}>
-            {categories.map(cat =>
-               <Col key={cat.key}>
-                  <Button
-                     type='primary'
-                     shape='round'
-                  >{cat.value}
-                  </Button>
-               </Col>
-            )}
-         </Row>
-
-         <Row gutter={[16, 16]}>
-            {products.map((p, idx) =>
-               <Col xs={24} sm={12} md={8} lg={6} key={idx}>
-                  <ProductCard product={p} />
-               </Col>
-            )}
-         </Row>
-      </div>
-   )
-}
+				<Col xs={24}>
+					<Row justify='space-between'>
+						<Col>
+							<Typography style={{ fontSize: '16px', fontWeight: 'bold' }}>Recommended Collections</Typography>
+						</Col>
+						<Col>
+							<CaretLeftOutlined />
+							<CaretRightOutlined />
+							<Typography.Text style={{ fontSize: '16px', fontWeight: 'bold' }}>More</Typography.Text>
+						</Col>
+					</Row>
+				</Col>
+				<Col xs={24}>
+					<Row gutter={[24, 0]}>
+						{collection.map(coll =>
+							<Col xs={24} sm={8} key={coll.key} >
+								<img src={coll.img} alt={coll.name} width={'100%'} />
+							</Col>
+						)}
+					</Row>
+				</Col>
+			</Row>
+		</>
+	)
+};
