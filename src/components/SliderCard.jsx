@@ -1,7 +1,7 @@
 import React from 'react'
 import {
    Typography
-} from 'antd'
+} from 'antd';
 
 export default function SliderCard({ product }) {
    return (
@@ -11,11 +11,11 @@ export default function SliderCard({ product }) {
             style={{
                textAlign: 'center',
                position: 'absolute',
-               zIndex: 10,
+               zIndex: 1,
                bottom: 0,
                left: '50%',
                transform: 'translate(-50%, 0%)',
-               background: '#FF3300',
+               // background: 'blue',
                color: '#FFF',
                padding: '10px',
                width: '80%',

@@ -9,6 +9,7 @@ import {
 	CaretRightOutlined
 } from '@ant-design/icons';
 import ImageSlider from '../components/ImageSlider';
+import TopCard from '../components/TopCard';
 
 
 const categories = [
@@ -60,42 +61,54 @@ const products = [
 		name: 'JENNIE HUMAN CHANEL BY 8LACKPINK',
 		rating: 3,
 		totalSale: 378,
-		price: 50
+		price: 50,
+		categories: 'animal',
+		qty: 20
 	},
 	{
 		img: 'https://i.seadn.io/gcs/files/f2b0607fd8c70ab0eed6736c7d4d4e29.png?auto=format&w=3840',
 		name: 'JISOO BY 8LACKPINK',
 		rating: 4,
 		totalSale: 478,
-		price: 60
+		price: 60,
+		categories: 'samuri',
+		qty: 14
 	},
 	{
 		img: 'https://i.seadn.io/gae/gLelqCp_C4Tn_-F7pw1IH4waPSYuf0Nn8O4msugmtrWndkivOcAsqkKa7sNYO7CWhjyZ9Kz5NpD2-YIpQdG4MLIAXpXWvsqW3wmT?auto=format&w=384',
 		name: 'JISCO #487',
 		rating: 3.5,
 		totalSale: 500,
-		price: 54
+		price: 54,
+		categories: 'far',
+		qty: 18
 	},
 	{
 		img: 'https://i.seadn.io/gcs/files/3776dbd44f3b34e72784856cd4da3a65.jpg?auto=format&w=3840',
 		name: 'YuGiYn',
 		rating: 3,
 		totalSale: 378,
-		price: 50
+		price: 50,
+		categories: 'hollo',
+		qty: 25
 	},
 	{
 		img: 'https://i.seadn.io/gcs/files/79c5a4cf5631a8c10453f2d7b6786da3.jpg?auto=format&w=3840',
 		name: 'Nyolings',
 		rating: 4,
 		totalSale: 350,
-		price: 60
+		price: 60,
+		categories: 'mary',
+		qty: 12
 	},
 	{
 		img: 'https://i.seadn.io/gae/VlwngAwLusLHCfFpb3zJGjtoo19ZL26aQkkyVePk9E2yHr5YgUr_r0OGzjvpOvToID3f1F6mtysNS9EUtADMe8CggITQoNnBSIYk?auto=format&w=384',
 		name: 'The Chimpsons Official',
 		rating: 3,
 		totalSale: 400,
-		price: 60
+		price: 60,
+		categories: 'sam gi',
+		qty: 22
 	},
 ];
 
@@ -117,21 +130,188 @@ const collection = [
 	}
 ];
 
+const topPick = [
+	{
+		key: 'top1',
+		name: 'toppick1',
+		img: 'https://cdn.pixabay.com/photo/2022/04/20/12/17/mountains-7145101__340.jpg'
+	},
+	{
+		key: 'top2',
+		name: 'toppick2',
+		img: 'https://cdn.pixabay.com/photo/2022/04/20/12/17/abstract-art-7145099__340.jpg'
+	},
+	{
+		key: 'top3',
+		name: 'toppick3',
+		img: 'https://cdn.pixabay.com/photo/2021/12/06/14/54/non-fungible-token-6850535__340.jpg'
+	},
+	{
+		key: 'top4',
+		name: 'toppick4',
+		img: 'https://cdn.pixabay.com/photo/2022/04/20/12/17/abstract-art-7145100__340.jpg'
+	},
+];
+
 
 export default function Home() {
 	return (
 		<>
 			<Row gutter={[24, 24]}>
 				<Col xs={24}>
-					<div style={{ background: '#f0f2f5',padding:'0px 32px' }}>
+					<div
+						style={{
+							background: '#f0f2f5',
+							padding: '0px 32px'
+						}}>
 						<ImageSlider products={products} />
 					</div>
 				</Col>
 
 				<Col xs={24}>
+					<Row justify='space-between' style={{ marginBottom: '24px' }}>
+						<Col>
+							<Typography.Title level={5} >
+								Recommended Collections
+							</Typography.Title>
+						</Col>
+						<Col>
+							<CaretLeftOutlined />
+							<CaretRightOutlined />
+							<Typography.Text style={{ fontSize: '16px', fontWeight: 'bold' }}>More</Typography.Text>
+						</Col>
+					</Row>
+
+					<Row gutter={[24, 0]} style={{ marginBottom: '24px' }}>
+						{collection.map(coll =>
+							<Col xs={24} sm={8} key={coll.key} >
+								<img src={coll.img} alt={coll.name} width={'100%'} />
+							</Col>
+						)}
+					</Row>
+				</Col>
+
+				<Col xs={24}>
+					<div
+						style={{
+							background: '#f0f2f5',
+							padding: '12px 24px 24px 24px',
+							marginBottom: '24px' 
+						}}
+					>
+						<Typography
+							style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'center', margin: '24px' }}
+						>
+							Today's top picks
+						</Typography>
+
+						<Row gutter={[24, 24]}>
+							<Col xs={24} sm={12} md={8} >
+								<div style={{ position: 'relative' }}>
+									<img
+										src={topPick[0].img}
+										alt={topPick[0].name}
+										width={'100%'}
+									/>
+									<Typography
+										style={{
+											position: 'absolute',
+											zIndex: 10,
+											bottom: 10,
+											left: 10,
+											color: '#fff'
+										}}
+									>{topPick[0].name}</Typography>
+								</div>
+							</Col>
+
+							<Col xs={24} sm={12} md={8} >
+								<div style={{ position: 'relative' }}>
+									<img
+										src={topPick[1].img}
+										alt={topPick[1].name}
+										width={'100%'}
+									/>
+									<Typography
+										style={{
+											position: 'absolute',
+											zIndex: 10,
+											bottom: 10,
+											left: 10,
+											color: '#fff'
+										}}
+									>{topPick[1].name}</Typography>
+								</div>
+							</Col>
+
+							<Col xs={24} sm={12} md={8} >
+								<Row gutter={[0, 8]}>
+									<Col xs={24}>
+										<div style={{ position: 'relative' }}>
+											<img
+												src={topPick[2].img}
+												alt={topPick[2].name}
+												width={'48%'}
+											/>
+											<Typography
+												style={{
+													position: 'absolute',
+													zIndex: 10,
+													bottom: 10,
+													left: 10,
+													color: '#fff'
+												}}
+											>{topPick[2].name}</Typography>
+										</div>
+									</Col>
+
+									<Col xs={24}>
+										<div style={{ position: 'relative' }}>
+											<img
+												src={topPick[3].img}
+												alt={topPick[3].name}
+												width={'48%'}
+											/>
+											<Typography
+												style={{
+													position: 'absolute',
+													zIndex: 10,
+													bottom: 10,
+													left: 10,
+													color: '#fff'
+												}}
+											>{topPick[3].name}</Typography>
+										</div>
+									</Col>
+								</Row>
+							</Col>
+						</Row>
+					</div>
+				</Col>
+
+				<Col xs={24} style={{ marginBottom: '24px' }}>
+					<Typography
+						style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '24px' }}
+					>
+						Top Collections (7 days)
+					</Typography>
+
+					<Row gutter={[24, 24]}>
+						{products.map(item =>
+							<Col xs={24} sm={12} md={6} key={item.name}>
+								<TopCard card={item} />
+							</Col>
+						)}
+					</Row>
+				</Col>
+
+				<Col xs={24}>
 					<Row justify='space-between'>
 						<Col>
-							<Typography style={{ fontSize: '16px', fontWeight: 'bold' }}>Recommended Collections</Typography>
+							<Typography.Title level={5}
+							>
+								Recommended Creators
+							</Typography.Title>
 						</Col>
 						<Col>
 							<CaretLeftOutlined />
@@ -140,15 +320,7 @@ export default function Home() {
 						</Col>
 					</Row>
 				</Col>
-				<Col xs={24}>
-					<Row gutter={[24, 0]}>
-						{collection.map(coll =>
-							<Col xs={24} sm={8} key={coll.key} >
-								<img src={coll.img} alt={coll.name} width={'100%'} />
-							</Col>
-						)}
-					</Row>
-				</Col>
+
 			</Row>
 		</>
 	)
