@@ -110,8 +110,12 @@ export default function MainLayout() {
 			</Header>
 
 			<Content
-				style={{ width: '80%', margin: '0px auto', marginTop:'16px'}}
+				style={{ width: '80%', margin: '0px auto', marginTop: '16px' }}
 			>
+				<Typography.Title level={2} style={{ marginLeft: '30px' }}
+				>
+					ตั้งค่าบัญชี
+				</Typography.Title>
 				<Outlet />
 			</Content>
 		</Layout>
