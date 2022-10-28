@@ -1,28 +1,40 @@
 import React from 'react';
 import {
+   Avatar,
    Button,
+   Col,
+   Divider,
    Layout,
    Menu,
+   Row,
+   Typography,
 } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 import { Outlet } from 'react-router-dom';
 
 const menuItems = [
    {
       key: 'account',
       label: <Button type='text' href='/profile/account'>ข้อมูลบัญชี</Button>
-
    },
    {
       key: 'security',
       label: <Button type='text' href='/profile/security'>ความปลอดภัย</Button>
    },
    {
-      key: 'bank',
+      key: 'bookbank',
       label: <Button type='text' href='/profile/bookbank'>บัญชีธนาคาร</Button>
    },
 ]
 
 export default function Profile() {
+   // console.log('path=>', window.location.href);
+   const myArray = window.location.href.split('/')
+
+   const currentPath = myArray[myArray.length - 1]
+   // console.log('currentPath=>', currentPath);
+
+
    return (
       <>
          <Layout>
@@ -30,11 +42,11 @@ export default function Profile() {
                breakpoint="lg"
                collapsedWidth="0"
             >
-               <div  />
+               <div />
                <Menu
                   // theme="dark"
                   mode="inline"
-                  defaultSelectedKeys={['account']}
+                  defaultSelectedKeys={[currentPath]}
                   items={menuItems}
                />
             </Layout.Sider>
@@ -44,9 +56,28 @@ export default function Profile() {
                   margin: '24px 16px 0',
                }}
             >
+               <Row>
+                  <Col>
+                     <Avatar size={64} icon={<UserOutlined />} />
+                  </Col>
+                  <Col style={{ marginLeft: '20px' }}>
+                     <Typography.Title level={4}
+                     >
+                        Narapon Jirattitigarnpong
+                     </Typography.Title>
+                     <Typography.Title level={4} style={{ marginTop: '10px' }}
+                     >
+                        User ID #1234
+                     </Typography.Title>
+                  </Col>
+
+                  <Divider style={{ background: '#000' }} />
+               </Row>
+
                <div className='profile-sider' >
                   <Outlet />
                </div>
+               
             </Layout.Content>
          </Layout>
       </>
