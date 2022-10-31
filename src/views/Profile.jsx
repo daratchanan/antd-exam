@@ -57,6 +57,12 @@ export default function Profile() {
                }}
             >
                <Row>
+                  {/* <Col xs={24}>
+                     <Typography.Title level={2} style={{ marginLeft: '30px' }}
+                     >
+                        ตั้งค่าบัญชี
+                     </Typography.Title>
+                  </Col> */}
                   <Col>
                      <Avatar size={64} icon={<UserOutlined />} />
                   </Col>
@@ -77,7 +83,7 @@ export default function Profile() {
                <div className='profile-sider' >
                   <Outlet />
                </div>
-               
+
             </Layout.Content>
          </Layout>
       </>

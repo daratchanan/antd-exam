@@ -67,6 +67,15 @@ const menuItems = [
 
 
 export default function MainLayout() {
+
+	const myArray = window.location.href.split('/')
+	console.log('myArray=>', myArray);
+
+	const isProfile = myArray.includes('profile')
+	// const currentPath = myArray[myArray.length - 1]
+	console.log('isProfile=>', isProfile);
+
+
 	return (
 		<Layout>
 			<Header>
@@ -112,11 +121,14 @@ export default function MainLayout() {
 			<Content
 				style={{ width: '80%', margin: '0px auto', marginTop: '16px' }}
 			>
-				<Typography.Title level={2} style={{ marginLeft: '30px' }}
-				>
-					ตั้งค่าบัญชี
-				</Typography.Title>
+				{isProfile &&
+					<Typography.Title level={2} style={{ marginLeft: '30px' }}
+					>
+						ตั้งค่าบัญชี
+					</Typography.Title>
+				}
 				<Outlet />
+
 			</Content>
 		</Layout>
 	)

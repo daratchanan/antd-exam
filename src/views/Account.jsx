@@ -21,7 +21,7 @@ export default function Account() {
 
    return (
       <>
-         <Row>
+         <Row> 
             <Col xs={24}>
                <Row justify='space-between'>
                   <Col>
