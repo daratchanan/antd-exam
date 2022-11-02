@@ -69,11 +69,11 @@ const menuItems = [
 export default function MainLayout() {
 
 	const myArray = window.location.href.split('/')
-	console.log('myArray=>', myArray);
+	// console.log('myArray=>', myArray);
 
 	const isProfile = myArray.includes('profile')
 	// const currentPath = myArray[myArray.length - 1]
-	console.log('isProfile=>', isProfile);
+	// console.log('isProfile=>', isProfile);
 
 
 	return (

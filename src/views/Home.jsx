@@ -10,6 +10,7 @@ import {
 } from '@ant-design/icons';
 import ImageSlider from '../components/ImageSlider';
 import TopCard from '../components/TopCard';
+import CarouselModern from '../components/CarouselModern';
 
 
 const categories = [
@@ -164,7 +165,8 @@ export default function Home() {
 							background: '#f0f2f5',
 							padding: '0px 32px'
 						}}>
-						<ImageSlider products={products} />
+						{/* <ImageSlider products={products} /> */}
+						<CarouselModern images={products}/>
 					</div>
 				</Col>
 
